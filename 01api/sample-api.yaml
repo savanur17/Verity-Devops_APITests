@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  SampleAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      DefinitionUri: sample-swagger.json
+    
+Outputs:
+
+    SampleAPI:
+      Description: "Root API endpoint URL for Prod stage"
+      Value: !Sub "https://${SampleAPI}.execute-api.${AWS::Region}.amazonaws.com/prod"
+      Export:
+        Name: SampleAPIRoot
